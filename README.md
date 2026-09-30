@@ -28,6 +28,7 @@ Then restart that profile. Other DSH versions and operating systems have not bee
 - A Token usage and plan settings page. The original DSH account component stays mounted for sign-in; its account-and-balance settings page is replaced.
 - Five-hour and weekly quota windows, configurable plans and reward cards. Real upstream API costs stay in the local administrator ledger.
 - Automatic compaction when context use reaches 50% (`cordis.patch.yml`).
+- Visible Edge/Chrome browser tools for opening pages, reading text, clicking, typing, saving screenshots, and closing the window. The host needs a locally installed Edge or Chrome browser.
 
 ## Configuration
 
