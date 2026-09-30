@@ -5,7 +5,7 @@ description: Read, create, edit, combine, and preview PDF documents. Use when a 
 
 # PDF work in Harness
 
-Use the installed Python from the workspace-dependencies tool. The loaded skill supplies absolute paths to `pdf_tool.py` and the bundled PyMuPDF directory. The tool inserts that directory into Python's import path itself. Keep inputs, scripts, previews, and final files in the task workspace. Never overwrite an input PDF unless the user explicitly asks for it.
+Use the installed Python from the workspace-dependencies tool. The loaded skill supplies the absolute path to `pdf_tool.py`. On first use, the tool downloads a checksum-verified PyMuPDF runtime into the local DSH cache and inserts it into Python's import path. Keep inputs, scripts, previews, and final files in the task workspace. Never overwrite an input PDF unless the user explicitly asks for it.
 
 ## Read and inspect
 

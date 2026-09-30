@@ -2,10 +2,16 @@
 
 import argparse
 import json
+import subprocess
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "vendor" / "python"))
+root = Path(__file__).resolve().parents[3]
+vendor = root / "vendor" / "python"
+if not (vendor / "pymupdf" / "__init__.py").exists():
+    subprocess.run([sys.executable, str(root / "scripts" / "ensure-office-assets.py")], check=True, capture_output=True, text=True)
+    vendor = Path.home() / ".dsh" / "cache" / "office-boost" / "office-assets-v1" / "vendor" / "python"
+sys.path.insert(0, str(vendor))
 import pymupdf
 
 
