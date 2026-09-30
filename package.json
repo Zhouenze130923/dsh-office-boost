@@ -1,0 +1,28 @@
+{
+  "name": "@local/dsh-office-boost",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Office Boost — office models, PPT Master, PDF workflows, plan allowances, and quota controls for DeepSeek Harness.",
+  "meta": {
+    "title": "Office Boost",
+    "description": "办公增强：PPT Master、PDF 工作流、思考强度、套餐额度与体验卡。"
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-layout"
+      ]
+    }
+  }
+}

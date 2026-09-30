@@ -1,0 +1,81 @@
+{
+  "plan": "free",
+  "freeFiveHourTokens": 10000000,
+  "freeWeekTokens": 50000000,
+  "cacheReadWeight": 0.01,
+  "ultraMultiplier": 3,
+  "plans": {
+    "free": {
+      "priceMonthlyCny": 0,
+      "quotaMultiplier": 1,
+      "maxStepsPerTurn": 80,
+      "monthlyCostCny": 50,
+      "fiveHourCostCny": 4,
+      "weekCostCny": 20
+    },
+    "starter": {
+      "priceMonthlyCny": 19.9,
+      "quotaMultiplier": 1.75,
+      "maxStepsPerTurn": 120,
+      "monthlyCostCny": 60,
+      "fiveHourCostCny": 6,
+      "weekCostCny": 40
+    },
+    "plus": {
+      "priceMonthlyCny": 69.9,
+      "quotaMultiplier": 2,
+      "maxStepsPerTurn": 200,
+      "monthlyCostCny": 80,
+      "fiveHourCostCny": 10,
+      "weekCostCny": 50
+    },
+    "pro": {
+      "priceMonthlyCny": 99.9,
+      "quotaMultiplier": 10,
+      "maxStepsPerTurn": 400,
+      "monthlyCostCny": 90,
+      "fiveHourCostCny": 15,
+      "weekCostCny": 65
+    },
+    "max": {
+      "priceMonthlyCny": 299.9,
+      "quotaMultiplier": 20,
+      "maxStepsPerTurn": 800,
+      "monthlyCostCny": 100,
+      "fiveHourCostCny": 20,
+      "weekCostCny": 100
+    },
+    "ultra": {
+      "priceMonthlyCny": 699.9,
+      "quotaMultiplier": 400,
+      "maxStepsPerTurn": 4000,
+      "monthlyCostCny": 500,
+      "fiveHourCostCny": 100,
+      "weekCostCny": 500
+    }
+  },
+  "modelPricesCnyPerMillion": {
+    "flash": {
+      "cacheHit": 0.02,
+      "cacheMiss": 1,
+      "output": 4
+    },
+    "pro": {
+      "cacheHit": 0.15,
+      "cacheMiss": 4.5,
+      "output": 13.5
+    }
+  },
+  "rewardChances": {
+    "resetFiveHour": 0.04,
+    "resetWeek": 0.015,
+    "resetAll": 0.005,
+    "planTrial": 0.01,
+    "ultraTrial": 0.01
+  },
+  "planTrial": {
+    "plan": "plus",
+    "minutes": 30
+  },
+  "ultraTrialMinutes": 30
+}

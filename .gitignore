@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.tmp
+*.log
+.DS_Store
+node_modules/
+coverage/
+dist/
+vendor/python/*
+vendor/ppt-master/references/**/*.png
+vendor/ppt-master/templates/sounds/
+vendor/ppt-master/templates/icons/

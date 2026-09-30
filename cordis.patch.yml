@@ -1,0 +1,43 @@
+# Office Boost — composition patch.
+#
+# Inserted by the bundle declared in this package's package.json. The profile's
+# own cordis.patch.yml applies after every bundle layer, so a user override of
+# any row below still wins.
+
+- insert:
+    # The provider route. A thin delegating adapter over the shipped DeepSeek
+    # account route: it adds the three virtual office models and the `ultra`
+    # reasoning tier, and forwards every real request upstream unchanged.
+    - id: office-boost-adapter
+      name: '@local/dsh-office-boost'
+
+    # Lock the upstream route at 256k too, so a request that reaches it by any
+    # other path sees the same ceiling.
+    #
+    # `agent-default-model` is deliberately NOT overridden here: the shipped
+    # default stays valid even if this plugin ever fails to activate, and the
+    # office mode is one click away in the composer dock.
+    - id: llm-deepseek-account
+      name: '@deepseek-ai/dsh-llm-deepseek-account'
+      config:
+        defaultContextWindow: 262144
+        maxTokens: 65536
+
+    # Automatically compact when the routed model reaches 50% of its context.
+    # At the 256k ceiling this is 131072 tokens; the shipped output reservation
+    # and headroom also leave that much pressure budget.
+    - id: compaction-basic
+      name: '@deepseek-ai/dsh-compaction-basic'
+      config:
+        auto: true
+        thresholdRatio: 0.5
+
+    # The `/compact` command that forces condensation on demand.
+    - id: command-compact
+      name: '@deepseek-ai/dsh-command-compact'
+
+# Office authoring needs no row here: the desktop host already registers the
+# `dsh-office` skill provider (adding another is a duplicate-registration
+# error), and every shipped agent preset mounts `tool-skill`, which is what
+# puts the office-docx / office-pptx / office-xlsx workflows in front of the
+# model. Verified by the provider collision this bundle hit on first install.
