@@ -25,14 +25,24 @@ Then restart that profile. Other DSH versions and operating systems have not bee
 - Flash, Work and Pro Work office modes with a separate thinking control, including Ultra.
 - The official DOCX, PPTX and XLSX skills already shipped with DSH, plus this bundle's PDF skill and PPT Master.
 - An office workflow prompt that directs the agent to load the right skill, create real files, and check the result.
-- A Token usage and plan settings page. The original DSH account component stays mounted for sign-in; its account-and-balance settings page is replaced.
-- Five-hour and weekly quota windows, configurable plans and reward cards. Real upstream API costs stay in the local administrator ledger.
+- A simple quota and benefits page showing only remaining percentages, the current plan, and active benefits. The original DSH account component stays mounted for sign-in; its account-and-balance settings page is replaced.
+- Five-hour and weekly quota windows, configurable plans, and two silent daily rewards at 09:00 Asia/Shanghai. Real upstream API costs stay in the local administrator ledger.
 - Automatic compaction when context use reaches 50% (`cordis.patch.yml`).
 - Visible Edge/Chrome browser tools for opening pages, reading text, clicking, typing, saving screenshots, and closing the window. The host needs a locally installed Edge or Chrome browser.
 
 ## Configuration
 
-Edit `office-boost.config.json` to change plan allowances, prices, cost guards, and reward chances. The local administrator command is `node scripts/office-admin.mjs --help`. The plan upgrade page prepares an application for an administrator; it does not process payment or activate a plan by itself.
+Edit `office-boost.config.json` to change plan allowances, prices, cost guards, daily reward time, and the weighted reward pool. Daily rewards are credited automatically. The local administrator command supports:
+
+```sh
+node scripts/office-admin.mjs rewards list
+node scripts/office-admin.mjs rewards add ultra_trial '{"duration":"24h","ultra_multiplier":1}'
+node scripts/office-admin.mjs rewards delete <reward-id>
+node scripts/office-admin.mjs rewards pool
+node scripts/office-admin.mjs rewards pool set ultra_trial 5
+```
+
+The CLI stores reward-pool overrides in `~/.dsh/storages/office-boost-reward-pool.json`, so plugin updates do not overwrite administrator changes. Reward records live in the local quota ledger. The first launch after the configured daily time issues that day's two rewards once; restarts do not duplicate them. Rewards belong to DSH Office Boost, not DeepSeek or another provider.
 
 The Host stores quota data under the current user's `~/.dsh/storages/` directory. No account credentials or quota history are included in this repository.
 

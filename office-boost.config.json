@@ -66,13 +66,22 @@
       "output": 13.5
     }
   },
-  "rewardChances": {
-    "resetFiveHour": 0.04,
-    "resetWeek": 0.015,
-    "resetAll": 0.005,
-    "planTrial": 0.01,
-    "ultraTrial": 0.01
+  "dailyRewards": {
+    "enabled": true,
+    "count": 2,
+    "at": "09:00",
+    "timeZone": "Asia/Shanghai"
   },
+  "rewardPool": [
+    { "type": "reset_five_hour", "weight": 35 },
+    { "type": "reset_week", "weight": 10 },
+    { "type": "reset_all", "weight": 5 },
+    { "type": "week_percent", "weight": 20, "percent": 10, "expireMinutes": 10080 },
+    { "type": "extra_quota", "weight": 20, "amount": 1000000, "scope": "both", "expireMinutes": 1440 },
+    { "type": "max_trial", "weight": 5, "durationMinutes": 60 },
+    { "type": "ultra_trial", "weight": 2, "durationMinutes": 30 },
+    { "type": "ultra_multiplier_trial", "weight": 3, "durationMinutes": 120, "ultraMultiplier": 1 }
+  ],
   "planTrial": {
     "plan": "plus",
     "minutes": 30
